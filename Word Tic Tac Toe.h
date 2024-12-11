@@ -12,6 +12,7 @@ class ultimateTTT_board : public Board<T> {
     int miniB;
 protected:
     vector<ultimateTTT_board<T>> miniBoards;
+    T** currentBoard;  // Pointer to the current board
 public:
     ultimateTTT_board();
     ultimateTTT_board(int x);
@@ -48,11 +49,11 @@ ultimateTTT_board<T>::ultimateTTT_board() {
     this->miniB = 0;                  // Initialize miniB
     this->n_moves = 0;               // Initialize number of moves
     this->rows = this->columns = 3;  // Set dimensions of the ultimate board
-    this->board.resize(3,3);
+
     for (int i = 0; i < 9; ++i) {
         miniBoards.push_back(ultimateTTT_board<T>(1));
     }
-    
+
 }
 template<typename T>
 ultimateTTT_board<T>::ultimateTTT_board(int x) {} //to prevent overflow (i hope)
